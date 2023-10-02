@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementCaves : MonoBehaviour
+public class WorldMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     private float walkingSpeed;
     private float xDirection;
     private float xVector;
-    
+   
+    private float yDirection;
+    private float yVector;
+    // Start is called before the first frame update
     void Start()
     {
         walkingSpeed = 5f;
@@ -19,6 +21,8 @@ public class PlayerMovementCaves : MonoBehaviour
     {
         xDirection = Input.GetAxis("Horizontal");
         xVector = xDirection * walkingSpeed * Time.deltaTime;
-        transform.position = transform.position + new Vector3(xVector, 0, 0);
+        yDirection = Input.GetAxis("Vertical");
+        yVector = yDirection * walkingSpeed * Time.deltaTime;
+        transform.position = transform.position + new Vector3(xVector, yVector, 0);
     }
 }
