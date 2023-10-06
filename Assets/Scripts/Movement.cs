@@ -2,27 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    private float walkingSpeed;
+    // Start is called before the first frame update
     private float xDirection;
     private float xVector;
-   
     private float yDirection;
     private float yVector;
-    // Start is called before the first frame update
+    public int xSpeed;
+    public int ySpeed;
+    public bool Cave;
+    
+    
     void Start()
     {
-        walkingSpeed = 5f;
+        if (Cave)
+        {
+            ySpeed = 0;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         xDirection = Input.GetAxis("Horizontal");
-        xVector = xDirection * walkingSpeed * Time.deltaTime;
+        xVector = xDirection * xSpeed * Time.deltaTime;
         yDirection = Input.GetAxis("Vertical");
-        yVector = yDirection * walkingSpeed * Time.deltaTime;
+        yVector = yDirection * ySpeed * Time.deltaTime;
         transform.position = transform.position + new Vector3(xVector, yVector, 0);
     }
 }
