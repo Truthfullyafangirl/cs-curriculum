@@ -6,35 +6,35 @@ using UnityEngine.SceneManagement;
 
 public class Damage : MonoBehaviour
 {
-    public int health;
+    public HUD hud;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        hud = GameObject.FindObjectOfType<HUD>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+      
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Spikes"))
         {
-            ChangeHealth();
+            LooseHealth();
         }
     }
-    void ChangeHealth()
+    void LooseHealth()
     {
-        health -= 1;
-        if (health <= 0)
+        hud.health -= 1;
+        if (hud.health <= 0)
         {
             Death();
         }
-        Debug.Log("Health: "+health);
+        Debug.Log("Health: "+hud.health);
     }
 
     void Death()
@@ -42,4 +42,5 @@ public class Damage : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name); 
     }
+    
 }

@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Axe
   - Spikes
+  - HealthText
+  - CoinText
+  - HealthPotion
   layers:
   - Default
   - TransparentFX

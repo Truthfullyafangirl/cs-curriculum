@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class CollectCoins : MonoBehaviour
 {
-    public int gold;
+    public HUD hud;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        hud = GameObject.FindObjectOfType<HUD>();
     }
 
     // Update is called once per frame
@@ -30,8 +31,8 @@ public class CollectCoins : MonoBehaviour
 
     void CollectCoin()
     {
-        gold += 1;
-        Debug.Log("Coins: "+gold);
+        hud.gold += 1;
+        Debug.Log("Coins: "+hud.gold);
     }
 
 }
