@@ -8,6 +8,8 @@ public class Damage : MonoBehaviour
 {
     public HUD hud;
 
+    private float fireballdestroy = 4;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,25 @@ public class Damage : MonoBehaviour
             LooseHealth();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Fireball"))
+        {
+            other.gameObject.SetActive(false);
+            LooseHealth();
+        }
+        else
+        {
+            fireballdestroy -= Time.deltaTime;
+            if (fireballdestroy < 0)
+            {
+                other.gameObject.SetActive(false);
+                fireballdestroy = 4;
+            }
+        }
+    }
+
     void LooseHealth()
     {
         hud.health -= 1;

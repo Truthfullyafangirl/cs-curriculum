@@ -6,35 +6,24 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public int Speed;
+    public int speed;
     public GameObject player;
-    public GameObject projectile;
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Instantiate(projectile, transform.position, transform.rotation);
-        }
-    }
-    /*
-        //instantiate fireball 
-        Vector3 localPosition = player.transform.position - transform.position;
-        transform.Translate(localPosition.x * Time.deltaTime * Speed, localPosition.y * Time.deltaTime * Speed,
-            localPosition.z * Time.deltaTime * Speed);
-    }
-    */
+    
+    private Vector3 localPosition;
     
     // Start is called before the first frame update
     void Start() 
     {
-        Speed = 2;
+        player = GameObject.FindGameObjectWithTag("Player");
+        localPosition = player.transform.position - transform.position;
+        speed = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        
+        transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
     }
     
 } 

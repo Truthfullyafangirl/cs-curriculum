@@ -11,6 +11,7 @@ TagManager:
   - HealthText
   - CoinText
   - HealthPotion
+  - Fireball
   layers:
   - Default
   - TransparentFX
