@@ -31,6 +31,13 @@ public class Healthgain : MonoBehaviour
 
     void GainHealth()
     {
-        hud.health += 1;
-    }
+        if (hud.health >= 5)
+        {
+            hud.health = 5;
+        }
+        else 
+        {
+            hud.health += 1;
+        }
+}
 }

@@ -31,8 +31,7 @@ public class CollectCoins : MonoBehaviour
 
     void CollectCoin()
     {
-        hud.gold += 1;
-        Debug.Log("Coins: "+hud.gold);
+            hud.gold += 1;
+            Debug.Log("Coins: "+hud.gold);
     }
-
 }

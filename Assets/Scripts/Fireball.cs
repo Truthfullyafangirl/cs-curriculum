@@ -8,6 +8,7 @@ public class Fireball : MonoBehaviour
 {
     public int speed;
     public GameObject player;
+    public Animator animator; 
     
     private Vector3 localPosition;
     
@@ -22,8 +23,14 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Instantiate(animator);
+        }
+    }
 } 

@@ -50,6 +50,7 @@ public class Damage : MonoBehaviour
 
     void LooseHealth()
     {
+        Coinloss();
         hud.health -= 1;
         if (hud.health <= 0)
         {
@@ -64,4 +65,15 @@ public class Damage : MonoBehaviour
         SceneManager.LoadScene(scene.name); 
     }
     
+    void Coinloss() 
+    {
+        if (hud.gold > 5)
+        {
+            hud.gold -= 1;
+        }
+    }
+    
 }
+
+
+   
