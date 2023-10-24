@@ -12,7 +12,10 @@ public class Movement : MonoBehaviour
     public int xSpeed;
     public int ySpeed;
     public bool Cave;
-    
+
+    public GameObject projectile;
+    private float fireRate = 0;
+    private string facing = "up";
     
     void Start()
     {
@@ -30,5 +33,40 @@ public class Movement : MonoBehaviour
         yDirection = Input.GetAxis("Vertical");
         yVector = yDirection * ySpeed * Time.deltaTime;
         transform.position = transform.position + new Vector3(xVector, yVector, 0);
+        
+        
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            facing = "right"; 
+        }
+        
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            facing = "left"; 
+        }
+        
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            facing = "up"; 
+        }
+        
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            facing = "down"; 
+        }
     }
+
+    void OnMouseDown()
+    {
+        fireRate -= Time.deltaTime;
+        
+        if (fireRate < 0)
+        {
+            Instantiate(projectile, transform.position, transform.rotation);
+            fireRate = 1;
+            
+
+        }
+    }
+    
 }
