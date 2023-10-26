@@ -85068,7 +85068,7 @@ MonoBehaviour:
   xSpeed: 5
   ySpeed: 5
   Cave: 0
-  projectile: {fileID: 0}
+  facing: up
 --- !u!114 &1750497395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85094,6 +85094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7da453c29e48bfb203a6c08e411b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  projectile: {fileID: 5790822057519619805, guid: d181d0f6b0e116b4298e1e64b89f707e,
+    type: 3}
+  Player: {fileID: 1750497384}
 --- !u!4 &1825907749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4281311786053241907, guid: 69c7343f050914c7787bbbe42c07b5b8,

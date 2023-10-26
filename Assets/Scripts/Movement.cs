@@ -12,10 +12,8 @@ public class Movement : MonoBehaviour
     public int xSpeed;
     public int ySpeed;
     public bool Cave;
-
-    public GameObject projectile;
-    private float fireRate = 0;
-    private string facing = "up";
+    
+    public string facing = "up";
     
     void Start()
     {
@@ -56,17 +54,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
-    {
-        fireRate -= Time.deltaTime;
-        
-        if (fireRate < 0)
-        {
-            Instantiate(projectile, transform.position, transform.rotation);
-            fireRate = 1;
-            
-
-        }
-    }
+    
     
 }
