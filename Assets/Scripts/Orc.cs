@@ -10,52 +10,78 @@ public class Orc : MonoBehaviour
    
    public float enemyhealth = 2;
    public int speed;
-   public GameObject player;
+   GameObject player;
    
+   Animator animator;
+   
+   public GameObject enemycoindrop;
    private Vector3 localPosition;
    
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        localPosition = player.transform.position - transform.position;
+        animator = GetComponentInChildren<Animator>();
+        animator.enabled = false;
         speed = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 localPosition = player.transform.position - transform.position;
-        localPosition = localPosition.normalized;
-        transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Fireball"))
+        if (player != null)
         {
-            other.gameObject.SetActive(false);
-            EnemyLooseHealth();
+            Vector3 localPosition = player.transform.position - transform.position;
+            localPosition = localPosition.normalized;
+            transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
         }
+    }
+    
+        void EnemyLooseHealth()
+        {
+            enemyhealth -= 1;
+            if (enemyhealth <= 0)
+            {
+                Defeat();
+            }
+        }
+
+        void Defeat()
+        {
+            Instantiate(enemycoindrop, transform.position, transform.rotation);
+            gameObject.SetActive(false);
+        }
+    
         
-        if (other.gameObject.CompareTag("Spikes"))
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            other.gameObject.SetActive(false);
-            EnemyLooseHealth();
+            if (other.gameObject.CompareTag("Player"))
+            {
+                player = other.gameObject;
+                animator.enabled = true;
+            }
         }
-        
-    }
 
-    void EnemyLooseHealth()
-    {
-        enemyhealth -= 1;
-        if (enemyhealth <= 0)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            Defeat();
+            if (other.gameObject.CompareTag("Fireball"))
+            {
+                Debug.Log("Damage");
+                other.gameObject.SetActive(false);
+                EnemyLooseHealth();
+            }
+            
+            if (other.gameObject.CompareTag("Spikes"))
+            {
+                other.gameObject.SetActive(false);
+                EnemyLooseHealth();
+            }
         }
-    }
 
-    void Defeat()
-    {
-        gameObject.SetActive(false);
-    }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                animator.enabled = false;
+                player = null;
+            }
+        }
 }

@@ -56,7 +56,6 @@ public class Damage : MonoBehaviour
         {
             Death();
         }
-        Debug.Log("Health: "+hud.health);
     }
 
     void Death()

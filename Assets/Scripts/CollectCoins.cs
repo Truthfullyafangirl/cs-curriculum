@@ -25,7 +25,6 @@ public class CollectCoins : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             CollectCoin();
-
         }
     }
 
