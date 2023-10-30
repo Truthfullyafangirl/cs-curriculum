@@ -85153,8 +85153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8348d0fe68f4fa6a041b1d89c63789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 5
-  ySpeed: 5
+  xSpeed: 4
+  ySpeed: 4
   Cave: 0
   facing: up
 --- !u!114 &1750497395
