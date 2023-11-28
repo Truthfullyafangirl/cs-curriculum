@@ -10,42 +10,64 @@ public class Playerfireball : MonoBehaviour
     public int speed;
     private Vector3 localPosition;
     public GameObject projectile;
-    public GameObject Player; 
-    private float firerate = 2;
+    public Movement Player;
+    private Vector3 Target;
+    private float firerate = 1;
     
     // Start is called before the first frame update
     void Start()
     {
+        Player = GetComponent<Movement>();
         speed = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        firerate -= Time.deltaTime;
+        
+        if (Input.GetKeyDown("space"))
         {
-            if (Player.GetComponent<Movement>().facing == "up")
+            if (firerate < 0)
             {
-                firerate -= Time.deltaTime;
-                if (firerate < 0)
-                {
-                    Vector2 FirePosition = transform.position;
+                //set to default fire position
+                Vector2 FirePosition = transform.position;
+                
+                if (Player.facing == "up")
+                { 
                     FirePosition.y += 1;
-                    Debug.Log(FirePosition);
-                    Instantiate(projectile, FirePosition, transform.rotation);
-                    transform.Translate(localPosition.x * Time.deltaTime * speed,
-                        localPosition.y * Time.deltaTime * speed,
-                        localPosition.z * Time.deltaTime * speed);
-                    
-                    firerate = 2;
+                    Target = FirePosition;
+                    Target.y += 50;
+                    //transform.Translate(localPosition.x * Time.deltaTime * speed,
+                    //  localPosition.y * Time.deltaTime * speed);
                 }
+                
+                else if (Player.facing == "down")
+                {
+                    FirePosition.y += 1;
+                    Target = FirePosition;
+                    Target.y += 50;
+                }
+                
+                else if (Player.facing == "right")
+                {
+                    FirePosition.y += 1;
+                    Target = FirePosition;
+                    Target.y += 50;
+                }
+                
+                else if (Player.facing == "left")
+                {
+                    FirePosition.y += 1;
+                    Target = FirePosition;
+                    Target.y += 50;
+                }
+                
+                
+                var fireball = Instantiate(projectile, FirePosition, transform.rotation);
+                fireball.transform.position += (Target* speed*Time.deltaTime);
+                firerate = 1;
             }
-            
-            else if (Player.GetComponent<Movement>().facing == "down")
-            {
-
-            }
-            
         }
     }
     
