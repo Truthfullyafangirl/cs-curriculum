@@ -4,17 +4,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+using Random = UnityEngine.Random; 
+
 public class Orc : MonoBehaviour
 {
     // Start is called before the first frame update
    
    public float enemyhealth = 2;
    public int speed;
+   public int randomValue;
    GameObject player;
    
    Animator animator;
    
    public GameObject enemycoindrop;
+   public GameObject enemyhealthdrop;
    private Vector3 localPosition;
    
     void Start()
@@ -35,7 +39,7 @@ public class Orc : MonoBehaviour
         }
     }
     
-        void EnemyLooseHealth()
+        public void EnemyLooseHealth()
         {
             enemyhealth -= 1;
             if (enemyhealth <= 0)
@@ -44,10 +48,23 @@ public class Orc : MonoBehaviour
             }
         }
 
-        void Defeat()
+        public void Defeat()
         {
-            Instantiate(enemycoindrop, transform.position, transform.rotation);
-            gameObject.SetActive(false);
+            randomValue = Random.Range(0, 3);
+            
+            Debug.Log (randomValue); 
+            
+            if (randomValue == 1)
+            {
+                Instantiate(enemycoindrop, transform.position, transform.rotation);
+            }
+            
+            else if (randomValue == 2)
+            {
+                Instantiate(enemyhealthdrop, transform.position, transform.rotation);
+            }
+            
+            gameObject.SetActive(false); 
         }
     
         
@@ -62,18 +79,19 @@ public class Orc : MonoBehaviour
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Fireball"))
-            {
-                Debug.Log("Damage");
-                other.gameObject.SetActive(false);
-                EnemyLooseHealth();
-            }
-            
             if (other.gameObject.CompareTag("Spikes"))
             {
                 other.gameObject.SetActive(false);
                 EnemyLooseHealth();
             }
+            
+            
+            if (other.gameObject.CompareTag("Fireball"))
+            {
+                //other.gameObject.SetActive(false);
+                EnemyLooseHealth();
+            }
+           
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -82,6 +100,6 @@ public class Orc : MonoBehaviour
             {
                 animator.enabled = false;
                 player = null;
-            }
+            } 
         }
 }

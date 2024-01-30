@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
@@ -15,11 +16,13 @@ public class SceneSwitch : MonoBehaviour
     static RuntimeAnimatorController playerAnimator;
     int currentScene;
     GameObject player;
+    //private Movement playermovement;
 
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
         player = GameObject.FindWithTag("Player");
+        //playermovement = player.GetComponent<Movement>();
 
 
         if (sceneSwitchedFrom > -1)
@@ -61,7 +64,8 @@ public class SceneSwitch : MonoBehaviour
         {
             sceneSwitchedFrom = currentScene;
             playerAnimator = player.GetComponentInChildren<Animator>().runtimeAnimatorController;
-            SceneManager.LoadScene(scene);
+            SceneManager.LoadScene(scene); 
+            //playermovement.Cave = !playermovement.Cave;
         }
     }
 }

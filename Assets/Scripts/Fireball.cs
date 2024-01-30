@@ -28,6 +28,7 @@ public class Fireball : MonoBehaviour
         transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed,
             localPosition.z * Time.deltaTime * speed);
         existing -= Time.deltaTime;
+        
         if (existing < 0)
         {
             gameObject.SetActive(false);
@@ -35,12 +36,11 @@ public class Fireball : MonoBehaviour
         }
     }
 
-    /* private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Orc"))
         {
-            Instantiate(animator);
+            other.gameObject.GetComponent<Orc>().EnemyLooseHealth();
         }
     }
-    */
 } 

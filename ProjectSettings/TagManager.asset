@@ -12,6 +12,8 @@ TagManager:
   - CoinText
   - HealthPotion
   - Fireball
+  - Orc
+  - Floor
   layers:
   - Default
   - TransparentFX

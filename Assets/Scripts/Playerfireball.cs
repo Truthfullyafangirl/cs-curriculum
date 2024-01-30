@@ -32,45 +32,48 @@ public class Playerfireball : MonoBehaviour
             {
                 //set to default fire position
                 Vector2 FirePosition = transform.position;
+                Target = FirePosition;
                 
+                switch (Player.facing)
+                {
+                    case "up":
+                        FirePosition += Vector2.up * 0.75f; // Adjust offset as needed
+                        break;
+                    case "down":
+                        FirePosition += Vector2.down * 0.75f;
+                        break;
+                    case "right":
+                        FirePosition += Vector2.right * 0.75f;
+                        break;
+                    case "left":
+                        FirePosition += Vector2.left * 0.75f;
+                        break;
+                }
+                
+                var fireball = Instantiate(projectile, FirePosition, transform.rotation);
+                Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
                 if (Player.facing == "up")
                 { 
-                    FirePosition.y += 1;
-                    Target = FirePosition;
-                    Target.y += 50;
-                    //transform.Translate(localPosition.x * Time.deltaTime * speed,
-                    //  localPosition.y * Time.deltaTime * speed);
+                    rb.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
                 }
                 
                 else if (Player.facing == "down")
                 {
-                    FirePosition.y += 1;
-                    Target = FirePosition;
-                    Target.y += 50;
+                    rb.AddForce(Vector2.down * speed, ForceMode2D.Impulse);
                 }
                 
                 else if (Player.facing == "right")
                 {
-                    FirePosition.y += 1;
-                    Target = FirePosition;
-                    Target.y += 50;
+                    rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
                 }
                 
                 else if (Player.facing == "left")
                 {
-                    FirePosition.y += 1;
-                    Target = FirePosition;
-                    Target.y += 50;
+                    rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
                 }
                 
-                
-                var fireball = Instantiate(projectile, FirePosition, transform.rotation);
-                fireball.transform.position += (Target* speed*Time.deltaTime);
                 firerate = 1;
             }
         }
     }
-    
-  
-    
 }

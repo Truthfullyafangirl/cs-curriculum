@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7101103389178533185}
   - component: {fileID: -3514862467880035125}
   - component: {fileID: 4327165216284067482}
-  - component: {fileID: 1146068421868002553}
+  - component: {fileID: -1819013509014931099}
   m_Layer: 0
   m_Name: Turret_Projectile 1
   m_TagString: Fireball
@@ -121,18 +121,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
---- !u!114 &1146068421868002553
-MonoBehaviour:
+--- !u!50 &-1819013509014931099
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5790822057519619805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8e7da453c29e48bfb203a6c08e411b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  projectile: {fileID: 5790822057519619805}
-  Player: {fileID: 412193027009803667, guid: 34448014912494d33b041af48acd0291, type: 3}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
