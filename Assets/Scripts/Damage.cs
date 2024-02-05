@@ -26,7 +26,7 @@ public class Damage : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spikes"))
         {
-            LooseHealth();
+            Death();
         }
     }
 
