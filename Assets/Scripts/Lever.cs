@@ -6,35 +6,33 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
     
+    GameObject door;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject door = GameObject.FindWithTag("Door");
     }
 
     // Update is called once per frame
     void Update()
     {
-       
         
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Lever"))
+        print("triggered");
+        if (other.gameObject.CompareTag("Player")) && Input.GetKeyDown(KeyCode.Q))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                Open();
-            }
+            Open();
         }
     }
 
     void Open()
     {
-        GameObject myObject = GameObject.Find("Pixel door");
-        myObject.SetActive(false);
+        print("Open");
+        door.SetActive(false);
     }
     
 }

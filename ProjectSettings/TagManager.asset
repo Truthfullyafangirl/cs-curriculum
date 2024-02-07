@@ -14,6 +14,8 @@ TagManager:
   - Fireball
   - Orc
   - Floor
+  - Lever
+  - Door
   layers:
   - Default
   - TransparentFX
