@@ -75,6 +75,11 @@ public class Orc : MonoBehaviour
                 player = other.gameObject;
                 animator.enabled = true;
             }
+            
+            if (other.gameObject.CompareTag("Fireball"))
+            {
+                EnemyLooseHealth();
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -84,14 +89,6 @@ public class Orc : MonoBehaviour
                 other.gameObject.SetActive(false);
                 EnemyLooseHealth();
             }
-            
-            
-            if (other.gameObject.CompareTag("Fireball"))
-            {
-                //other.gameObject.SetActive(false);
-                EnemyLooseHealth();
-            }
-           
         }
 
         private void OnTriggerExit2D(Collider2D other)
