@@ -28,6 +28,11 @@ public class Damage : MonoBehaviour
         {
             Death();
         }
+        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            LooseHealth();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

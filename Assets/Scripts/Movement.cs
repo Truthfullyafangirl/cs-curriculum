@@ -77,6 +77,11 @@ public class Movement : MonoBehaviour
         {
             grounded = true;
         }
+        
+        if (collision.gameObject.CompareTag("Enemy")) 
+        {
+            grounded = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -84,6 +89,11 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             grounded = false;
+        }
+        
+        if (collision.gameObject.CompareTag("Enemy")) 
+        {
+            grounded = true;
         }
     }
 }

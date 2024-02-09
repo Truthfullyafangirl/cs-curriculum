@@ -11,9 +11,11 @@ public class Orc : MonoBehaviour
     // Start is called before the first frame update
    
    public float enemyhealth = 2;
-   public int speed;
+   public int xspeed;
+   public int yspeed;
    public int randomValue;
    GameObject player;
+   public bool platformer; 
    
    Animator animator;
    
@@ -25,7 +27,12 @@ public class Orc : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         animator.enabled = false;
-        speed = 1;
+        xspeed = 1;
+        yspeed = 1;
+        if (platformer)
+        {
+            yspeed = 0; 
+        } 
     }
 
     // Update is called once per frame
@@ -35,7 +42,7 @@ public class Orc : MonoBehaviour
         {
             Vector3 localPosition = player.transform.position - transform.position;
             localPosition = localPosition.normalized;
-            transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
+            transform.Translate(localPosition.x * Time.deltaTime * xspeed, localPosition.y * Time.deltaTime * yspeed, localPosition.z * Time.deltaTime * xspeed);
         }
     }
     
@@ -75,11 +82,6 @@ public class Orc : MonoBehaviour
                 player = other.gameObject;
                 animator.enabled = true;
             }
-            
-            if (other.gameObject.CompareTag("Fireball"))
-            {
-                EnemyLooseHealth();
-            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -87,6 +89,11 @@ public class Orc : MonoBehaviour
             if (other.gameObject.CompareTag("Spikes"))
             {
                 other.gameObject.SetActive(false);
+                EnemyLooseHealth();
+            }
+            //mr ansell says move this to the fireball, change EnemyLooseHealth to whatever the function is in the player. Call other.gameObject.LooseHealth()
+            if (other.gameObject.CompareTag("Fireball"))
+            {
                 EnemyLooseHealth();
             }
         }
