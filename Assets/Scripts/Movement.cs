@@ -82,6 +82,11 @@ public class Movement : MonoBehaviour
         {
             grounded = true;
         }
+        
+        if (collision.gameObject.CompareTag("Moving platforms")) 
+        {
+            grounded = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)

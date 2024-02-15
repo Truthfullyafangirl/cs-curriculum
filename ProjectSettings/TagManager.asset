@@ -16,6 +16,7 @@ TagManager:
   - Floor
   - Lever
   - Door
+  - Moving platforms
   layers:
   - Default
   - TransparentFX

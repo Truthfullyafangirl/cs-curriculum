@@ -14,6 +14,8 @@ public class Playerfireball : MonoBehaviour
     private Vector3 Target;
     private float firerate = 1;
     
+    public bool Cave;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,52 +30,90 @@ public class Playerfireball : MonoBehaviour
         
         if (Input.GetKeyDown("space"))
         {
-            if (firerate < 0)
+            if (!Cave)
             {
-                //set to default fire position
-                Vector2 FirePosition = transform.position;
-                Target = FirePosition;
-                
-                switch (Player.facing)
+                if (firerate < 0)
                 {
-                    case "up":
-                        FirePosition += Vector2.up * 0.75f; // Adjust offset as needed
-                        break;
-                    case "down":
-                        FirePosition += Vector2.down * 0.75f;
-                        break;
-                    case "right":
-                        FirePosition += Vector2.right * 0.75f;
-                        break;
-                    case "left":
-                        FirePosition += Vector2.left * 0.75f;
-                        break;
+                    //set to default fire position
+                    Vector2 FirePosition = transform.position;
+                    Target = FirePosition;
+
+                    switch (Player.facing)
+                    {
+                        case "up":
+                            FirePosition += Vector2.up * 0.75f; // Adjust offset as needed
+                            break;
+                        case "down":
+                            FirePosition += Vector2.down * 0.75f;
+                            break;
+                        case "right":
+                            FirePosition += Vector2.right * 0.75f;
+                            break;
+                        case "left":
+                            FirePosition += Vector2.left * 0.75f;
+                            break;
+                    }
+
+                    var fireball = Instantiate(projectile, FirePosition, transform.rotation);
+                    Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+                    if (Player.facing == "up")
+                    {
+                        rb.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+                    }
+
+                    else if (Player.facing == "down")
+                    {
+                        rb.AddForce(Vector2.down * speed, ForceMode2D.Impulse);
+                    }
+
+                    else if (Player.facing == "right")
+                    {
+                        rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
+                    }
+
+                    else if (Player.facing == "left")
+                    {
+                        rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
+                    }
+
+                    firerate = 1;
                 }
-                
-                var fireball = Instantiate(projectile, FirePosition, transform.rotation);
-                Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
-                if (Player.facing == "up")
-                { 
-                    rb.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
-                }
-                
-                else if (Player.facing == "down")
-                {
-                    rb.AddForce(Vector2.down * speed, ForceMode2D.Impulse);
-                }
-                
-                else if (Player.facing == "right")
-                {
-                    rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
-                }
-                
-                else if (Player.facing == "left")
-                {
-                    rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
-                }
-                
-                firerate = 1;
             }
+
+            /* if (Cave)
+            {
+                if (firerate < 0)
+                {
+                    //set to default fire position
+                    Vector2 FirePosition = transform.position;
+                    Target = FirePosition;
+
+                    switch (Player.facing)
+                    {
+                        case "right":
+                            FirePosition += Vector2.right * 0.75f;
+                            break;
+                        case "left":
+                            FirePosition += Vector2.left * 0.75f;
+                            break;
+                    }
+
+                    var fireball = Instantiate(projectile, FirePosition, transform.rotation);
+                    Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+
+                    if (Player.facing == "right")
+                    {
+                        rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
+                    }
+
+                    else if (Player.facing == "left")
+                    {
+                        rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
+                    }
+
+                    firerate = 1;
+                }
+            }*/
         }
     }
 }
