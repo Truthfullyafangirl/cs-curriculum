@@ -33,6 +33,16 @@ public class Damage : MonoBehaviour
         {
             LooseHealth();
         }
+        
+        if (other.gameObject.CompareTag("Orc"))
+        {
+            LooseHealth();
+        }
+        
+        if (other.gameObject.CompareTag("Cave block"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -53,7 +63,7 @@ public class Damage : MonoBehaviour
         }
     }
 
-    void LooseHealth()
+    public void LooseHealth()
     {
         Coinloss();
         hud.health -= 1;

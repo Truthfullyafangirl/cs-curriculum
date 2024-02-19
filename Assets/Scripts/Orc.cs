@@ -46,7 +46,7 @@ public class Orc : MonoBehaviour
         }
     }
     
-        public void EnemyLooseHealth()
+        public void LooseHealth()
         {
             enemyhealth -= 1;
             if (enemyhealth <= 0)
@@ -89,12 +89,12 @@ public class Orc : MonoBehaviour
             if (other.gameObject.CompareTag("Spikes"))
             {
                 other.gameObject.SetActive(false);
-                EnemyLooseHealth();
+                LooseHealth();
             }
-            //mr ansell says move this to the fireball, change EnemyLooseHealth to whatever the function is in the player. Call other.gameObject.LooseHealth()
+           
             if (other.gameObject.CompareTag("Fireball"))
             {
-                EnemyLooseHealth();
+                LooseHealth();
             }
         }
 

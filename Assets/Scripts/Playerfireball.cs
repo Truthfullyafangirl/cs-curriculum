@@ -80,7 +80,7 @@ public class Playerfireball : MonoBehaviour
                 }
             }
 
-            /* if (Cave)
+            if (Cave)
             {
                 if (firerate < 0)
                 {
@@ -113,7 +113,7 @@ public class Playerfireball : MonoBehaviour
 
                     firerate = 1;
                 }
-            }*/
+            }
         }
     }
 }

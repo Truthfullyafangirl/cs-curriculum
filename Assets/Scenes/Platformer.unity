@@ -648,6 +648,11 @@ PrefabInstance:
       propertyPath: platformer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3583431895739220842, guid: 473eaeb8fb0d24d4f95486bfd1306511,
+        type: 3}
+      propertyPath: enemyhealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5177594877591661416, guid: 473eaeb8fb0d24d4f95486bfd1306511,
         type: 3}
       propertyPath: m_Constraints
@@ -662,6 +667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8083815285822387043, guid: 473eaeb8fb0d24d4f95486bfd1306511,
+        type: 3}
+      propertyPath: m_TagString
+      value: Orc
       objectReference: {fileID: 0}
     - target: {fileID: 8306312332643366840, guid: 473eaeb8fb0d24d4f95486bfd1306511,
         type: 3}
@@ -31890,12 +31900,12 @@ PrefabInstance:
     - target: {fileID: 1007222563776942056, guid: cddc0eae8679c4344b7e477729e7843b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.16
+      value: -6.27
       objectReference: {fileID: 0}
     - target: {fileID: 1007222563776942056, guid: cddc0eae8679c4344b7e477729e7843b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.43
+      value: -2.51
       objectReference: {fileID: 0}
     - target: {fileID: 1007222563776942056, guid: cddc0eae8679c4344b7e477729e7843b,
         type: 3}

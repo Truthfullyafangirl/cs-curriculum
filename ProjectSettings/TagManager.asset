@@ -17,6 +17,7 @@ TagManager:
   - Lever
   - Door
   - Moving platforms
+  - Cave block
   layers:
   - Default
   - TransparentFX

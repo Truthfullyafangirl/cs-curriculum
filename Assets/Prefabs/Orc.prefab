@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 3583431895739220842}
   m_Layer: 0
   m_Name: Orc
-  m_TagString: Untagged
+  m_TagString: Orc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,8 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyhealth: 2
-  speed: 3
+  xspeed: 0
+  yspeed: 0
   randomValue: 0
+  platformer: 0
   enemycoindrop: {fileID: 3462362578362087066, guid: 69c7343f050914c7787bbbe42c07b5b8,
     type: 3}
   enemyhealthdrop: {fileID: 6714063044941730547, guid: 4f8ed3f9e04c444fa815e599e2f250a7,

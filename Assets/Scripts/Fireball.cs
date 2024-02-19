@@ -40,7 +40,12 @@ public class Fireball : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Orc"))
         {
-            other.gameObject.GetComponent<Orc>().EnemyLooseHealth();
+            other.gameObject.GetComponent<Orc>().LooseHealth();
+        }
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Damage>().LooseHealth();
         }
     }
 } 
