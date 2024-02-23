@@ -87,6 +87,7 @@ public class Movement : MonoBehaviour
         {
             grounded = true;
         }
+        
     }
 
     void OnCollisionExit2D(Collision2D collision)
