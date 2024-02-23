@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bootupgrade : MonoBehaviour
 {
-    
+
+    public Movement player; 
     
     // Start is called before the first frame update
     void Start()
@@ -14,17 +15,17 @@ public class Bootupgrade : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Boot"))
+        if (other.gameObject.CompareTag("Player"))
         { 
-            //xSpeed = 5; 
-            //ySpeed = 5; 
-            other.gameObject.SetActive(false);
+            player.xSpeed = 5; 
+            player.ySpeed = 5; 
+            gameObject.SetActive(false);
         }
     }
     

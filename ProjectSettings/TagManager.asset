@@ -18,6 +18,7 @@ TagManager:
   - Door
   - Moving platforms
   - Cave block
+  - Boot
   layers:
   - Default
   - TransparentFX
