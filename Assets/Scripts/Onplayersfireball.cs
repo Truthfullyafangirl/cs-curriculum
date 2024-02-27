@@ -23,6 +23,20 @@ public class Onplayersfireball : MonoBehaviour
             other.gameObject.GetComponent<Orc>().LooseHealth();
             Destroy(gameObject);
         }
+        
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            Destroy(gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Moving platforms"))
+        {
+            Destroy(gameObject);
+        }
     }
-    
 }
